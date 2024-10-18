@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Description</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-control {
+            background-color: #2c2c2c;
+            border: 1px solid #444;
+            color: #ddd;
+        }
+        .btn-generate {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            margin-top: 10px;
+        }
+        .btn-generate:hover {
+            background-color: #444;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post">
+                    <div class="form-group">
+                        <label for="prompt">Describe your image</label>
+                        <textarea class="form-control" name="prompt" id="prompt" rows="3" placeholder="A cute mouse pilot wearing aviator goggles, unreal engine render, 8k"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-generate">Generate</button>
+                </form>
+            </div>
+            {% if filename %}
+				<div class="col-md-6 d-flex align-items-center justify-content-center">
+					<div class="image-container">
+						<img src="{{ url_for('display_image', filename= filename) }}" alt="Generated Image">
+					</div>
+				</div>
+            {% endif %}
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
